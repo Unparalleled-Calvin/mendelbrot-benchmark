@@ -15,7 +15,7 @@ ${run command} ${xmin} ${xmax} ${ymin} ${ymax} ${width} ${height} ${maxiter}
 
 ##### Languages
 
-- [ ] C/C++
+- [x] C/C++
 - [ ] Rust
 - [x] Python
 - [ ] Java
