@@ -38,10 +38,12 @@ def calc(C: List[Complex], maxiter: int, threshold: int = 4) -> List[int]:
     ret = []
     for c in C:
         z = Complex(0, 0)
-        for i in range(maxiter):
+        i = 0
+        while i < maxiter:
             z = z * z + c
             if abs(z) > threshold:
                 break
+            i += 1
         ret.append(i)
     return ret
 
