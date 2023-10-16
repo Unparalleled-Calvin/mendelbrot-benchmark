@@ -26,7 +26,7 @@ python mandelbrot.py -0.22 -0.219 -0.70 -0.699 100 100 124
 - [x] Rust
 - [x] Python
 - [ ] Java
-- [ ] Javascript
+- [x] Javascript
 - [ ] Go
 
 ##### Environment
