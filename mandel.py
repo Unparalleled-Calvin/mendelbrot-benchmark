@@ -52,12 +52,14 @@ def run(xmin: float, xmax: float, ymin: float, ymax: float, width: int, height: 
     steps = calc(C, maxiter)
     return steps
 
-def plot(steps: List[int], width, height):
+def plot(steps: List[int], width, height, filename = None):
     import numpy as np
     import matplotlib.pyplot as plt
     steps = np.array(steps)
     steps = steps.reshape((height, width))
     plt.imshow(steps, interpolation="nearest")
+    if filename is not None:
+        plt.savefig(filename)
     plt.show()
 
 def test(
@@ -70,8 +72,9 @@ def test(
         maxiter = 124
     ):
     steps = run(xmin, xmax, ymin, ymax, width, height, maxiter)
-    plot(steps, width, height)
+    plot(steps, width, height, "test.jpg")
 
 if __name__ == "__main__":
-    xmin, xmax, ymin, ymax, width, height, maxiter = sys.argv[1:6]
+    xmin, xmax, ymin, ymax = map(float, sys.argv[1:5])
+    width, height, maxiter = map(int, sys.argv[5:8])
     run(xmin, xmax, ymin, ymax, width, height, maxiter)

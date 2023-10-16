@@ -11,6 +11,13 @@ The Mandelbrot set consists of all (complex numbers) c that satisfy a certain co
 ${run command} ${xmin} ${xmax} ${ymin} ${ymax} ${width} ${height} ${maxiter}
 ```
 
+example:
+
+```shell
+python mandel.py -0.22 -0.219 -0.70 -0.699 100 100 124
+```
+
+
 #### Todo list
 
 ##### Languages

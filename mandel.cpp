@@ -1,4 +1,5 @@
 #include <vector>
+#include <cstring>
 
 class Complex {
 public:
@@ -67,4 +68,10 @@ std::vector<int> run(double xmin, double xmax, double ymin, double ymax, int wid
     std::vector<Complex> C = participants(X, Y);
     std::vector<int> steps = calc(C, maxiter);
     return steps;
+}
+
+int main(int argc, char* argv[]) {
+    double xmin = atof(argv[1]), xmax = atof(argv[2]), ymin = atof(argv[3]), ymax = atof(argv[4]);
+    int width = atoi(argv[5]), height = atoi(argv[6]), maxiter = atoi(argv[7]);
+    run(xmin, xmax, ymin, ymax, width, height, maxiter);
 }
