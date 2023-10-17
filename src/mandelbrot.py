@@ -69,8 +69,8 @@ def test(
         xmax = -0.219,
         ymin = -0.70,
         ymax = -0.699,
-        width = 100,
-        height = 100,
+        width = 1000,
+        height = 1000,
         maxiter = 124
     ):
     steps = run(xmin, xmax, ymin, ymax, width, height, maxiter)

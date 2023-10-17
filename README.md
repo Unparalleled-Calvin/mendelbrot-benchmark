@@ -5,7 +5,7 @@ Naive implementation of mendelbrot calculation with different programming langua
 What is the Mandelbrot set?
 The Mandelbrot set consists of all (complex numbers) c that satisfy a certain condition: a complex number c such that the trajectory produced by iterating through x² + c starting from an initial value of 0 does not go to infinity.
 
-#### Usage
+#### Usage of benchmark
 
 Edit `config.yaml` to decide which languages you would like to benchmark.
 
@@ -26,7 +26,11 @@ example:
 ```shell
 python mandelbrot.py -0.22 -0.219 -0.70 -0.699 100 100 124
 ```
-![](example.jpg)
+<div align="center">
+<img src="example.jpg"  />
+<br>
+Rendered by function test() in mandelbrot.py
+</div>
 
 #### Todo list
 
