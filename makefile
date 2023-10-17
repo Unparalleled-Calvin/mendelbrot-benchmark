@@ -8,47 +8,41 @@ NODE = node
 PYTHON = python3
 RUSTC = rustc
 
-# Source files
+BENCHMARK = benchmark.py
+
 SOURCES = mandelbrot.cpp mandelbrot.go mandelbrot.java mandelbrot.js mandelbrot.py mandelbrot.rs
 
-# Binaries directory
 BINDIR = target
 
-# Targets for each source file
 TARGETS = $(addprefix $(BINDIR)/, cpp_mandelbrot py_mandelbrot.py js_mandelbrot.js java_mandelbrot.class go_mandelbrot rust_mandelbrot)
 
-# Default target
 all: $(TARGETS)
 
-# Rule to compile C++ source with language prefix
-$(BINDIR)/cpp_%: src/%.cpp
+$(BINDIR)/cpp_mandelbrot: src/mandelbrot.cpp
 	$(CXX) -o $@ $<
 
-# Rule to run Python source with language prefix
-$(BINDIR)/py_%: src/%
+$(BINDIR)/py_mandelbrot.py: src/mandelbrot.py
 	cp $< $@
 
-# Rule to run JavaScript source with language prefix
-$(BINDIR)/js_%: src/%
+$(BINDIR)/js_mandelbrot.js: src/mandelbrot.js
 	cp $< $@
 
-# Rule to compile Java source with language prefix
-$(BINDIR)/java_%.class: src/%.java
+$(BINDIR)/java_mandelbrot.class: src/mandelbrot.java
 	$(JAVAC) -d $(BINDIR) $<
 
-# Rule to compile Rust source with language prefix
-$(BINDIR)/rust_%: src/%.rs
+$(BINDIR)/rust_mandelbrot: src/mandelbrot.rs
 	$(RUSTC) -o $@ $<
 
-# Rule to compile Go source with language prefix
-$(BINDIR)/go_%: src/%.go
+$(BINDIR)/go_mandelbrot: src/mandelbrot.go
 	$(GO) -o $@ $<
 
-# Clean up generated files
+benchmark:
+	$(PYTHON) $(BENCHMARK)
+
 clean:
 	rm -rf $(BINDIR)/*
 
 # Ensure the bin directory exists
 $(shell mkdir -p $(BINDIR))
 
-.PHONY: all clean
+.PHONY: all clean benchmark
