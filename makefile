@@ -19,7 +19,7 @@ TARGETS = $(addprefix $(BINDIR)/, cpp_mandelbrot py_mandelbrot.py js_mandelbrot.
 all: $(TARGETS)
 
 $(BINDIR)/cpp_mandelbrot: src/mandelbrot.cpp
-	$(CXX) -o $@ $<
+	$(CXX) -o $@ $< -O3
 
 $(BINDIR)/py_mandelbrot.py: src/mandelbrot.py
 	cp $< $@
@@ -27,17 +27,14 @@ $(BINDIR)/py_mandelbrot.py: src/mandelbrot.py
 $(BINDIR)/js_mandelbrot.js: src/mandelbrot.js
 	cp $< $@
 
-$(BINDIR)/java_mandelbrot.class: src/mandelbrot.java
-	$(JAVAC) -d $(BINDIR) $<
+$(BINDIR)/mandelbrot.class: src/mandelbrot.java
+	$(JAVAC) -d $(BINDIR) $< -O
 
 $(BINDIR)/rust_mandelbrot: src/mandelbrot.rs
-	$(RUSTC) -o $@ $<
+	$(RUSTC) -o $@ $< -Copt-level=3 -A warnings
 
 $(BINDIR)/go_mandelbrot: src/mandelbrot.go
 	$(GO) -o $@ $<
-
-benchmark:
-	$(PYTHON) $(BENCHMARK)
 
 clean:
 	rm -rf $(BINDIR)/*

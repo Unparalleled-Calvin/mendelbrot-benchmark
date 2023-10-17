@@ -11,6 +11,8 @@ Edit `config.yaml` to decide which languages you would like to benchmark.
 
 Edit `makefile` and `benchmark.py` to customize your toolchains which suit for `Linux` by default. 
 
+Note that the optimization levels of C++ and Rust are set to the maximum value 3.
+
 ```shell
 ${python} benchmark.py
 ```
