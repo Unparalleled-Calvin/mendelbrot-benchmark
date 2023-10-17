@@ -22,7 +22,7 @@ impl Mul for Complex {
 }
 
 fn abs(c: &Complex) -> f64 {
-    c.x * c.x - c.y * c.y
+    (c.x * c.x - c.y * c.y).abs()
 }
 
 fn linspace(vmin: f64, vmax: f64, length: i32) -> Vec<f64> {

@@ -20,7 +20,7 @@ class Complex {
     }
 
     public double abs() {
-        return this.x * this.x - this.y * this.y;
+        return Math.abs(this.x * this.x - this.y * this.y);
     }
 }
 

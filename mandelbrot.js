@@ -17,7 +17,7 @@ class Complex {
 }
 
 function abs(c) {
-    return c.x * c.x - c.y * c.y;
+    return Math.abs(c.x * c.x - c.y * c.y);
 }
 
 function linspace(vmin, vmax, length) {

@@ -21,7 +21,7 @@ Complex operator*(const Complex& c1, const Complex& c2) {
 }
 
 double abs(const Complex& c) {
-    return c.x * c.x - c.y * c.y;
+    return std::abs(c.x * c.x - c.y * c.y);
 }
 
 std::vector<double> linspace(double vmin, double vmax, int length) {
