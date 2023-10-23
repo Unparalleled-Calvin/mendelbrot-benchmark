@@ -1,5 +1,6 @@
 import sys
 from typing import List
+import numpy as np
 
 class Complex:
     def __init__(self, x = 0, y = 0):
@@ -65,18 +66,35 @@ def plot(steps: List[int], width, height, filename = None):
     plt.show()
 
 def test(
-        xmin = -0.22,
-        xmax = -0.219,
-        ymin = -0.70,
-        ymax = -0.699,
-        width = 1000,
-        height = 1000,
+        xmin = -1,
+        xmax = 1,
+        ymin = -1,
+        ymax = 1,
+        width = 100,
+        height = 100,
         maxiter = 124
     ):
     steps = run(xmin, xmax, ymin, ymax, width, height, maxiter)
     plot(steps, width, height, "test.jpg")
 
+def mandelbrot(xmin, xmax, ymin, ymax, width, height, maxiter=20, threshold=2):
+    """Returns an image of the Mandelbrot fractal of size (h,w)."""
+    x = np.linspace(xmin, xmax, width)
+    y = np.linspace(ymin, ymax, height)
+    A, B = np.meshgrid(x, y)
+    C = A + B * 1j
+    z = np.zeros_like(C)
+    divtime = maxiter + np.zeros(z.shape, dtype=int)
+    for i in range(maxiter):
+        z = z ** 2 + C
+        diverge = abs(z) > threshold  # who is diverging
+        div_now = diverge & (divtime == maxiter)  # who is diverging now
+        divtime[div_now] = i  # note when
+        z[diverge] = threshold  # avoid diverging too much
+    return divtime
+
 if __name__ == "__main__":
     xmin, xmax, ymin, ymax = map(float, sys.argv[1:5])
     width, height, maxiter = map(int, sys.argv[5:8])
-    run(xmin, xmax, ymin, ymax, width, height, maxiter)
+    mandelbrot(xmin, xmax, ymin, ymax, width, height, maxiter)
+    # a = run(xmin, xmax, ymin, ymax, width, height, maxiter)

@@ -10,11 +10,11 @@ RUSTC = rustc
 
 BENCHMARK = benchmark.py
 
-SOURCES = mandelbrot.cpp mandelbrot.go mandelbrot.java mandelbrot.js mandelbrot.py mandelbrot.rs
+SOURCES = mandelbrot.cpp mandelbrot.go mandelbrot.java mandelbrot.js mandelbrot.py mandelbrot.rs mandelbrot.r
 
 BINDIR = target
 
-TARGETS = $(addprefix $(BINDIR)/, cpp_mandelbrot py_mandelbrot.py js_mandelbrot.js java_mandelbrot.class go_mandelbrot rust_mandelbrot)
+TARGETS = $(addprefix $(BINDIR)/, cpp_mandelbrot py_mandelbrot.py js_mandelbrot.js r_mandelbrot.r mandelbrot.class go_mandelbrot rust_mandelbrot)
 
 all: $(TARGETS)
 
@@ -25,6 +25,9 @@ $(BINDIR)/py_mandelbrot.py: src/mandelbrot.py
 	cp $< $@
 
 $(BINDIR)/js_mandelbrot.js: src/mandelbrot.js
+	cp $< $@
+
+$(BINDIR)/r_mandelbrot.r: src/mandelbrot.r
 	cp $< $@
 
 $(BINDIR)/mandelbrot.class: src/mandelbrot.java

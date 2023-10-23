@@ -5,6 +5,7 @@ languages:
   - java
   - golang
   - rust
+  - r
 
 parameters:
   xmin: -0.22

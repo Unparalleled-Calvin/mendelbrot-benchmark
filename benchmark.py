@@ -19,6 +19,10 @@ prelude_data = {
         "explainer": "node",
         "target": "js_mandelbrot.js",
     },
+    "r": {
+        "explainer": "Rscript",
+        "target": "r_mandelbrot.r",
+    },
     "golang": {
         "explainer": "",
         "target": "go_mandelbrot",

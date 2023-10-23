@@ -45,3 +45,4 @@ Rendered by function test() in mandelbrot.py
 - [x] Java
 - [x] Javascript
 - [x] Go
+- [x] R
